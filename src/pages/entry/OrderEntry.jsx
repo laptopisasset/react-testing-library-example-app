@@ -9,7 +9,7 @@ export default function OrderEntry() {
         <Options optionType="scoops" />
         <Options optionType="toppings" />
       </div>
-      <h2>Grand Total: ${totals.grandTotal}</h2>
+      <h2>Grand Total: {totals.grandTotal}</h2>
     </>
   );
 }
