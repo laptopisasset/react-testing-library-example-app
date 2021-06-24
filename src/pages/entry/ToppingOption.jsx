@@ -14,6 +14,7 @@ export default function ToppingOption({ name, imagePath, updateItemCount }) {
         <Form.Check
           type="checkbox"
           onChange={(e) => updateItemCount(name, e.target.checked ? 1 : 0)}
+          label={name}
         />
       </Form.Group>
     </Col>
