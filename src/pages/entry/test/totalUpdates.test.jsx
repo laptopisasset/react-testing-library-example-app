@@ -2,6 +2,8 @@ import { render, screen } from "../../../test-utils/testing-library-utils";
 import userEvent from "@testing-library/user-event";
 import Options from "../Options";
 
+import OrderEntry from "../OrderEntry";
+
 test("update scoop subtotal when scoops change", async () => {
   render(<Options optionType="scoops" />);
 
@@ -56,4 +58,20 @@ test("update topping subtotal when topping change", async () => {
 
   userEvent.click(hotFudgeCheckbox);
   expect(toppingsTotal).toHaveTextContent("1.50");
+});
+
+describe("grand total", () => {
+  test("start at $0.00", () => {
+    render(<OrderEntry />);
+
+    const grandTotal = screen.getByRole("heading", {
+      name: /grand total: \$/i,
+    });
+
+    expect(grandTotal).toHaveTextContent("0.00");
+  });
+
+  test("updates properly if scoop is added first", () => {});
+  test("updates properly if topping is added first", () => {});
+  test("updates properly if item is removed", () => {});
 });
